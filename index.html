@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>image popup</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        background-color: #fff;
+      }
+      .container h1 {
+        font-size: 40px;
+        color: #333;
+        text-align: center;
+      }
+
+      .container .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 10px;
+        gap: 15px;
+      }
+
+      .container .image-container .image {
+        height: 100px;
+        width: 150px;
+        border: 2px solid #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .container .image-container .image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: 0.2s linear;
+      }
+
+      .container .image-container .image:hover img {
+        transform: scale(1.1);
+      }
+
+      .container .popup-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.9);
+        height: 100%;
+        width: 100%;
+        z-index: 30;
+        display: none;
+      }
+
+      .container .popup-image span {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 40px;
+        font-weight: bolder;
+        color: #fff;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      .container .popup-image img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid #fff;
+        border-radius: 5px;
+        width: 750px;
+        object-fit: cover;
+      }
+
+      .car-form {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 10px 10px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
+        border-bottom: 3px solid #a60606;
+        transition: 1s;
+      }
+
+      .side-head{
+        width: 100%;
+        background-color: #a606062d;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 1px solid #a60606;
+        font-size: 20px;
+        color: #a60606;
+        font-weight: 600;
+        letter-spacing: 1px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .content{
+        padding: 10px 30px;
+      }
+      .vin-num{
+        font-size: 22px;
+        font-weight: 600;
+        color: rgb(46, 46, 46);
+        margin-bottom: 10px;
+      }
+
+      .show-details{
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+      }
+
+      .detail-sec1{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .detail-sec2{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .inner-detail{
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .dyn-details{
+        width: 150px;
+        background-color: #9e9e9e15;
+        border: 0.5px solid #00000033;
+        padding: 5px;
+        border-radius: 2px;
+        margin-top: 5px;
+      }
+
+      .show-btn{
+        background-color: #a60606;
+        color: white;
+        padding: 20px 30px;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+
+      .close-btn{
+        background-color: #a60606;
+        padding: 2px 8px;
+        border-radius: 2px;
+        font-size: 28px;
+        color:white
+      }
+    </style>
+  </head>
+  <body>
+
+
+
+    <div class="car-form">
+      <div class="side-head">Car Details
+        <span class="close-btn">&times;</span>
+      </div>
+
+      <div class="content">
+        <p class="vin-num">VIN: 8589429</p>
+        <p class="sec-text">Car Pictures</p>
+        <div class="pictures">
+
+            <div class="container">
+      <div class="image-container">
+        <div class="image"><img src="./images/image (1).jpg" /></div>
+        <div class="image"><img src="./images/image (2).jpg" /></div>
+        <div class="image"><img src="./images/image (3).jpg" /></div>
+
+      </div>
+
+      <div class="popup-image">
+        <span>&times;</span>
+        <img src="images/1 (1).png" alt="" />
+      </div>
+    </div>
+        </div>
+        
+<!-- data -->
+     <div class="show-details">
+    <div class="detail-sec1">  
+        <div class="inner-detail">Car Condition: <span class="dyn-details">Used</span> </div>
+        <div class="inner-detail">No Of Doors: <span class="dyn-details">4</span></div>
+        <div class="inner-detail">State Name: <span class="dyn-details">UT</span></div> 
+    </div>
+    <div class="detail-sec2">  
+        <div class="inner-detail">Interior Condition: <span class="dyn-details">Not Found</span></div>
+        <div class="inner-detail">Exterior Condition: <span class="dyn-details">Not Found</span></div>
+        <div class="inner-detail">Make Year: <span class="dyn-details">2003</span></div>
+     </div>
+    </div>
+
+      </div>
+
+    </div>
+    <script>
+      document.querySelectorAll(".image-container img").forEach((image) => {
+        image.onclick = () => {
+          document.querySelector(".popup-image").style.display = "block";
+          document.querySelector(".popup-image img").src =
+            image.getAttribute("src");
+        };
+      });
+
+      document.querySelector(".popup-image span").onclick = () => {
+        document.querySelector(".popup-image").style.display = "none";
+      };
+    </script>
+  </body>
+</html>
